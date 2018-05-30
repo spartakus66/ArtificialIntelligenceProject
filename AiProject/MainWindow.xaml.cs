@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,19 @@ namespace AiProject
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines("..//Labitynth.txt");
+                foreach (string line in lines)
+                {
+                    Test.Text += line + '\n';
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            
         }
     }
 }
