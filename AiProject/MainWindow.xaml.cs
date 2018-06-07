@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,22 +22,35 @@ namespace AiProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string[] labirynthGraph;
         public MainWindow()
         {
             InitializeComponent();
+
+            labirynthGraph = new string[10];
             try
             {
-                string[] lines = System.IO.File.ReadAllLines("..//Labitynth.txt");
+                int i = 0;
+                string[] lines = File.ReadAllLines("../Labirynth.txt");
+                List<string> graphList = new List<string>();
+
                 foreach (string line in lines)
                 {
+                    graphList.Add(line);
+                }
+
+                foreach (string line in graphList)
+                {
+
                     Test.Text += line + '\n';
                 }
+
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
-            
+
         }
     }
 }
